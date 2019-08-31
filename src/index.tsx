@@ -11,82 +11,100 @@ import './lib/css/index.scss'
 import { CONFIG } from './lib'
 
 export interface IToolbar {
-  h1?: boolean
-  h2?: boolean
-  h3?: boolean
-  h4?: boolean
-  img?: boolean
-  link?: boolean
-  code?: boolean
-  preview?: boolean
-  expand?: boolean
-  undo?: boolean
-  redo?: boolean
-  save?: boolean
-  subfield?: boolean
+  h1?: boolean;
+  h2?: boolean;
+  h3?: boolean;
+  h4?: boolean;
+  h5?: boolean;
+  h6?: boolean;
+  bold?: boolean;
+  italic?: boolean;
+  underline?: boolean;
+  strikethrough?: boolean;
+  img?: boolean;
+  link?: boolean;
+  code?: boolean;
+  preview?: boolean;
+  expand?: boolean;
+  undo?: boolean;
+  redo?: boolean;
+  save?: boolean;
+  subfield?: boolean;
 }
 
 export interface IWords {
-  placeholder?: string
-  h1?: string
-  h2?: string
-  h3?: string
-  h4?: string
-  undo?: string
-  redo?: string
-  img?: string
-  link?: string
-  code?: string
-  save?: string
-  preview?: string
-  singleColumn?: string
-  doubleColumn?: string
-  fullscreenOn?: string
-  fullscreenOff?: string
-  addImgLink?: string
-  addImg?: string
+  placeholder?: string;
+  h1?: string;
+  h2?: string;
+  h3?: string;
+  h4?: string;
+  h5?: string;
+  h6?: string;
+  bold?: string;
+  italic?: string;
+  underline?: string;
+  strikethrough?: string;
+  undo?: string;
+  redo?: string;
+  img?: string;
+  link?: string;
+  code?: string;
+  save?: string;
+  preview?: string;
+  singleColumn?: string;
+  doubleColumn?: string;
+  fullscreenOn?: string;
+  fullscreenOff?: string;
+  addImgLink?: string;
+  addImg?: string;
 }
 
-interface ILeft {
-  prefix: string
-  subfix: string
-  str: string
-}
 interface IP {
-  value?: string
-  lineNum?: number
-  onChange?: (value: string) => void
-  onSave?: (value: string) => void
-  placeholder?: string
-  fontSize?: string
-  disabled?: boolean
-  style?: object
-  height?: string
-  preview?: boolean
-  expand?: boolean
-  subfield?: boolean
-  toolbar?: IToolbar
-  language?: string
-  addImg?: (file: File, index: number) => void 
+  value?: string;
+  lineNum?: number;
+  onChange?: (value: string) => void;
+  onSave?: (value: string) => void;
+  placeholder?: string;
+  fontSize?: string;
+  disabled?: boolean;
+  style?: object;
+  height?: string;
+  preview?: boolean;
+  expand?: boolean;
+  subfield?: boolean;
+  toolbar?: IToolbar;
+  language?: string;
+  addImg?: (file: File, index: number) => void;
 }
 
 interface IS {
-  preview: boolean
-  expand: boolean
-  subfield: boolean
-  history: string[]
-  historyIndex: number
-  lineIndex: number
-  value: string
-  words: IWords
+  preview: boolean;
+  expand: boolean;
+  subfield: boolean;
+  history: string[];
+  historyIndex: number;
+  lineIndex: number;
+  value: string;
+  words: IWords;
 }
 
 class MdEditor extends React.Component<IP, IS> {
+  state = {
+    preview: this.props.preview,
+    expand: this.props.expand,
+    subfield: this.props.subfield,
+    history: [] as string[],
+    historyIndex: 0,
+    lineIndex: 1,
+    value: this.props.value,
+    words: {} as IWords
+  }
+
   static defaultProps = {
     lineNum: true,
-    onChange: () => {},
-    onSave: () => {},
-    addImg: () => {},
+    onChange: () => { },
+    onSave: () => { },
+    addImg: () => { },
     fontSize: '14px',
     disabled: false,
     preview: false,
@@ -96,26 +114,13 @@ class MdEditor extends React.Component<IP, IS> {
     toolbar: CONFIG.toolbar,
     language: 'zh-CN'
   }
+
   private $vm = React.createRef<HTMLTextAreaElement>()
   private $scrollEdit = React.createRef<HTMLDivElement>()
   private $scrollPreview = React.createRef<HTMLDivElement>()
   private $blockEdit = React.createRef<HTMLDivElement>()
   private $blockPreview = React.createRef<HTMLDivElement>()
   private currentTimeout: number
-  constructor(props: IP) {
-    super(props)
-
-    this.state = {
-      preview: props.preview,
-      expand: props.expand,
-      subfield: props.subfield,
-      history: [],
-      historyIndex: 0,
-      lineIndex: 1,
-      value: props.value,
-      words: {}
-    }
-  }
 
   componentDidMount() {
     const { value } = this.props
@@ -230,6 +235,36 @@ class MdEditor extends React.Component<IP, IS> {
         subfix: '',
         str: words.h4
       },
+      h5: {
+        prefix: '##### ',
+        subfix: '',
+        str: words.h5
+      },
+      h6: {
+        prefix: '###### ',
+        subfix: '',
+        str: words.h6
+      },
+      bold: {
+        prefix: '**',
+        subfix: '**',
+        str: words.bold
+      },
+      italic: {
+        prefix: '*',
+        subfix: '*',
+        str: words.italic
+      },
+      underline: {
+        prefix: '_',
+        subfix: '_',
+        str: words.underline
+      },
+      strikethrough: {
+        prefix: '~',
+        subfix: '~',
+        str: words.strikethrough
+      },
       img: {
         prefix: '![alt](',
         subfix: ')',
@@ -273,7 +308,7 @@ class MdEditor extends React.Component<IP, IS> {
   addImg = (file: File, index: number) => {
     this.props.addImg(file, index)
   }
-  
+
   $img2Url = (name: string, url: string) => {
     const value = insertText(this.$vm.current, {
       prefix: `![${name}](${url})`,

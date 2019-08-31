@@ -14,7 +14,7 @@ interface IS {
 
 class Toolbars extends React.Component<IP, IS> {
   static defaultProps = {
-    onClick: () => {},
+    onClick: () => { },
     toolbar: {},
     words: {}
   }
@@ -85,6 +85,7 @@ class Toolbars extends React.Component<IP, IS> {
             <i className="foricon for-redo" />
           </li>
         )}
+        <div className="vl" />
         {toolbar.h1 && (
           <li onClick={() => this.onClick('h1')} title={words.h1}>
             H1
@@ -105,14 +106,46 @@ class Toolbars extends React.Component<IP, IS> {
             H4
           </li>
         )}
+        {toolbar.h5 && (
+          <li onClick={() => this.onClick('h5')} title={words.h5}>
+            H5
+          </li>
+        )}
+        {toolbar.h6 && (
+          <li onClick={() => this.onClick('h6')} title={words.h6}>
+            H6
+          </li>
+        )}
+        <div className="vl" />
+        {toolbar.bold && (
+          <li onClick={() => this.onClick('bold')} title={words.bold}>
+            <b>B</b>
+          </li>
+        )}
+        {toolbar.italic && (
+          <li onClick={() => this.onClick('italic')} title={words.italic}>
+            <i>I</i>
+          </li>
+        )}
+        {toolbar.underline && (
+          <li onClick={() => this.onClick('underline')} title={words.underline} style={{ textDecoration: 'underline' }}>
+            U
+          </li>
+        )}
+        {toolbar.strikethrough && (
+          <li onClick={() => this.onClick('strikethrough')} title={words.strikethrough} style={{ textDecoration: 'line-through' }}>
+            S
+          </li>
+        )}
+        <div className="vl" />
         {toolbar.img && (
           <li className="for-toolbar-img" onMouseOver={() => this.imgMouseOver()} onMouseOut={() => this.imgMouseOut()}>
             <i className="foricon for-image" />
-            <ul style={imgHidden ? {display: 'none'} : {}}>
+            <ul style={imgHidden ? { display: 'none' } : {}}>
               <li onClick={() => this.addImgUrl()}>{words.addImgLink}</li>
               <li>
                 {words.addImg}
-                <input type="file" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg" onChange={(e) => this.addImgFile(e)}/>
+                <input type="file" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg" onChange={(e) => this.addImgFile(e)} />
               </li>
             </ul>
           </li>

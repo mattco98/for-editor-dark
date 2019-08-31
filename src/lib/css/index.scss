@@ -1,3 +1,8 @@
+.vl {
+  border-left: 1px solid #666;
+  height: 100%;
+}
+
 .for-container {
   font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
   display: flex;
@@ -6,8 +11,8 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 12px;
-  background: #fff;
   font-size: 14px;
+  background-color: #424242;
 
   ul,
   ol,
@@ -26,7 +31,7 @@
     height: 100% !important;
   }
 
-  > div {
+  >div {
     &:first-child {
       border-top-left-radius: 8px;
       border-top-right-radius: 8px;
@@ -42,14 +47,15 @@
     display: flex;
     justify-content: space-between;
     padding: 0 6px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #666;
     color: #555;
     user-select: none;
 
-    > ul {
+    >ul {
       display: flex;
 
-      > li {
+      >li {
+        color: #bbb;
         display: flex;
         align-items: center;
         padding: 4px 6px;
@@ -60,13 +66,13 @@
         &.for-toolbar-img {
           position: relative;
 
-          > ul {
+          >ul {
             position: absolute;
             top: 100%;
             left: -50px;
             width: 140px;
             margin-top: 4px;
-            background: #fff;
+            background: #555;
             border-radius: 4px;
             box-shadow: rgba(0, 0, 0, 0.1) 0 2px 8px 0;
             z-index: 99;
@@ -102,12 +108,12 @@
         }
 
         &.for-active {
-          background: #ddd;
+          background: #666;
         }
 
         &:hover {
           cursor: pointer;
-          background: #e9e9e9;
+          background: #888;
         }
 
         i {
@@ -139,7 +145,7 @@
         min-height: 100%;
         box-sizing: border-box;
         padding: 10px 14px;
-        background: #fcfcfc;
+        background: #424242;
       }
     }
 
@@ -152,20 +158,24 @@
         width: 0;
         flex: 0 0 0;
       }
+
       .for-editor-block {
         display: flex;
         min-height: 100%;
+        color: #bbb;
       }
 
       .for-line-num {
         list-style: none;
-        background: #eee;
+        border-right: 1px solid #666;
         padding: 8px 0 120px;
         min-width: 30px;
         text-align: center;
+
         &.hidden {
           display: none;
         }
+
         li {
           list-style: none;
         }
@@ -208,10 +218,12 @@
     color: inherit;
     background: none;
     line-height: inherit;
+    color: #ddd;
   }
 
   .for-markdown-preview {
     line-height: 2;
+    border-left: 1px solid #666;
 
     p,
     blockquote,
@@ -221,11 +233,12 @@
     pre {
       margin-top: 0;
       margin-bottom: 0.6em;
+      color: #bbb;
     }
 
     h1,
     h2 {
-      border-bottom: 1px solid #e2e2e2;
+      border-bottom: 1px solid #666;
     }
 
     h1,
@@ -239,6 +252,8 @@
       font-weight: 600;
 
       text-indent: 0;
+
+      color: #bbb;
 
       &:target {
         padding-top: 4.5rem;
@@ -258,17 +273,17 @@
     ol {
       padding: 0.2em 0.8em;
 
-      > li {
+      >li {
         line-height: 2;
         padding-left: 0.2em;
         margin-left: 0.2em;
         list-style-type: disc;
 
-        > p {
+        >p {
           text-indent: 0;
         }
 
-        > ul {
+        >ul {
           &:last-child {
             margin-bottom: 0;
           }
@@ -276,7 +291,7 @@
           li {
             list-style-type: circle;
 
-            > ul li {
+            >ul li {
               list-style-type: square;
             }
           }
@@ -284,12 +299,12 @@
       }
     }
 
-    > ul,
+    >ul,
     ol {
       padding: 0 20px;
     }
 
-    ol > li {
+    ol>li {
       list-style-type: decimal;
     }
 
@@ -298,7 +313,7 @@
       margin-bottom: 0.6em;
       padding: 0 1em;
       color: #6a737d;
-      border-left: 0.25em solid #dfe2e5;
+      border-left: 0.25em solid #888;
 
       p {
         text-indent: 0;
@@ -317,7 +332,7 @@
       padding: 0.6em;
       overflow: auto;
       line-height: 1.6;
-      background-color: #f0f0f0;
+      background-color: #333;
       border-radius: 3px;
 
       code {
@@ -331,32 +346,37 @@
     code {
       padding: 0.2em 0.4em;
       margin: 0;
-      background-color: #f0f0f0;
+      background-color: #333;
       border-radius: 3px;
     }
 
     hr {
       margin-bottom: 0.6em;
       height: 1px;
-      background: #dadada;
+      background: #888;
       border: none;
     }
 
     table {
       width: 100%;
-      border: 1px solid #ddd;
+      border: 1px solid #666;
       margin-bottom: 0.6em;
       border-collapse: collapse;
       text-align: left;
+      color: #bbb;
 
       thead {
-        background: #eee;
+        background: #333;
       }
 
       th,
       td {
         padding: 0.1em 0.4em;
-        border: 1px solid #ddd;
+        border: 1px solid #666;
+      }
+
+      td: {
+        background-color: #444;
       }
     }
 

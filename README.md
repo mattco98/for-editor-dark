@@ -1,3 +1,5 @@
+_Note: this is a fork of for-editor. I have made the editor dark theme, as well as some additional changes (like more toolbar buttons)._
+
 # for-editor
 
 > for-editor 是一个基于 react 的 markdown 语法编辑器
