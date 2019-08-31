@@ -1,5 +1,8 @@
+$border-color: #666;
+$background-color: #363636;
+
 .vl {
-  border-left: 1px solid #666;
+  border-left: 1px solid $border-color;
   height: 100%;
 }
 
@@ -8,11 +11,11 @@
   display: flex;
   flex-direction: column;
   height: 600px;
-  border: 1px solid #ddd;
+  border: 1px solid $border-color;
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 12px;
   font-size: 14px;
-  background-color: #424242;
+  background-color: $background-color;
 
   ul,
   ol,
@@ -47,7 +50,7 @@
     display: flex;
     justify-content: space-between;
     padding: 0 6px;
-    border-bottom: 1px solid #666;
+    border-bottom: 1px solid $border-color;
     color: #555;
     user-select: none;
 
@@ -108,7 +111,7 @@
         }
 
         &.for-active {
-          background: #666;
+          background: $border-color;
         }
 
         &:hover {
@@ -145,7 +148,7 @@
         min-height: 100%;
         box-sizing: border-box;
         padding: 10px 14px;
-        background: #424242;
+        background: $background-color;
       }
     }
 
@@ -167,7 +170,7 @@
 
       .for-line-num {
         list-style: none;
-        border-right: 1px solid #666;
+        border-right: 1px solid $border-color;
         padding: 8px 0 120px;
         min-width: 30px;
         text-align: center;
@@ -223,7 +226,7 @@
 
   .for-markdown-preview {
     line-height: 2;
-    border-left: 1px solid #666;
+    border-left: 1px solid $border-color;
 
     p,
     blockquote,
@@ -238,7 +241,7 @@
 
     h1,
     h2 {
-      border-bottom: 1px solid #666;
+      border-bottom: 1px solid $border-color;
     }
 
     h1,
@@ -359,7 +362,7 @@
 
     table {
       width: 100%;
-      border: 1px solid #666;
+      border: 1px solid $border-color;
       margin-bottom: 0.6em;
       border-collapse: collapse;
       text-align: left;
@@ -372,7 +375,7 @@
       th,
       td {
         padding: 0.1em 0.4em;
-        border: 1px solid #666;
+        border: 1px solid $border-color;
       }
 
       td: {
