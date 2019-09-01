@@ -1,6 +1,6 @@
 {
   "name": "for-editor-dark",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "description": "react markdown editor",
   "main": "dist/index.js",
   "scripts": {
